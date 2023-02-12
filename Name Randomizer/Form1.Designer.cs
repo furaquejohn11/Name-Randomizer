@@ -39,10 +39,12 @@ namespace Name_Randomizer
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtNumOfGroups = new System.Windows.Forms.TextBox();
+            this.equallyYes = new System.Windows.Forms.CheckBox();
+            this.equallyNo = new System.Windows.Forms.CheckBox();
+            this.txtNumOfMembers = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnRandom = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -57,7 +59,7 @@ namespace Name_Randomizer
             // listBoxName
             // 
             this.listBoxName.FormattingEnabled = true;
-            this.listBoxName.Location = new System.Drawing.Point(520, 46);
+            this.listBoxName.Location = new System.Drawing.Point(508, 46);
             this.listBoxName.Name = "listBoxName";
             this.listBoxName.Size = new System.Drawing.Size(316, 316);
             this.listBoxName.TabIndex = 1;
@@ -91,6 +93,7 @@ namespace Name_Randomizer
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label1
             // 
@@ -104,7 +107,7 @@ namespace Name_Randomizer
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(657, 21);
+            this.label2.Location = new System.Drawing.Point(626, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 6;
@@ -137,49 +140,70 @@ namespace Name_Randomizer
             this.label5.TabIndex = 9;
             this.label5.Text = "Equally Divided?:";
             // 
-            // textBox2
+            // txtNumOfGroups
             // 
-            this.textBox2.Location = new System.Drawing.Point(140, 389);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(71, 20);
-            this.textBox2.TabIndex = 10;
+            this.txtNumOfGroups.Location = new System.Drawing.Point(140, 389);
+            this.txtNumOfGroups.Name = "txtNumOfGroups";
+            this.txtNumOfGroups.Size = new System.Drawing.Size(71, 20);
+            this.txtNumOfGroups.TabIndex = 10;
             // 
-            // checkBox1
+            // equallyYes
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(136, 426);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(44, 17);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Yes";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.equallyYes.AutoSize = true;
+            this.equallyYes.Location = new System.Drawing.Point(136, 426);
+            this.equallyYes.Name = "equallyYes";
+            this.equallyYes.Size = new System.Drawing.Size(44, 17);
+            this.equallyYes.TabIndex = 11;
+            this.equallyYes.Text = "Yes";
+            this.equallyYes.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // equallyNo
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(186, 426);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(40, 17);
-            this.checkBox2.TabIndex = 12;
-            this.checkBox2.Text = "No";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.equallyNo.AutoSize = true;
+            this.equallyNo.Location = new System.Drawing.Point(186, 426);
+            this.equallyNo.Name = "equallyNo";
+            this.equallyNo.Size = new System.Drawing.Size(40, 17);
+            this.equallyNo.TabIndex = 12;
+            this.equallyNo.Text = "No";
+            this.equallyNo.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // txtNumOfMembers
             // 
-            this.textBox3.Location = new System.Drawing.Point(197, 459);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(49, 20);
-            this.textBox3.TabIndex = 13;
+            this.txtNumOfMembers.Location = new System.Drawing.Point(197, 459);
+            this.txtNumOfMembers.Name = "txtNumOfMembers";
+            this.txtNumOfMembers.Size = new System.Drawing.Size(49, 20);
+            this.txtNumOfMembers.TabIndex = 13;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(346, 311);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(92, 51);
+            this.btnCancel.TabIndex = 14;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnRandom
+            // 
+            this.btnRandom.Location = new System.Drawing.Point(785, 528);
+            this.btnRandom.Name = "btnRandom";
+            this.btnRandom.Size = new System.Drawing.Size(92, 51);
+            this.btnRandom.TabIndex = 15;
+            this.btnRandom.Text = "Random Now";
+            this.btnRandom.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 591);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox2);
+            this.ClientSize = new System.Drawing.Size(904, 591);
+            this.Controls.Add(this.btnRandom);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.txtNumOfMembers);
+            this.Controls.Add(this.equallyNo);
+            this.Controls.Add(this.equallyYes);
+            this.Controls.Add(this.txtNumOfGroups);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -210,10 +234,12 @@ namespace Name_Randomizer
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtNumOfGroups;
+        private System.Windows.Forms.CheckBox equallyYes;
+        private System.Windows.Forms.CheckBox equallyNo;
+        private System.Windows.Forms.TextBox txtNumOfMembers;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnRandom;
     }
 }
 

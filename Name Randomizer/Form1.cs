@@ -15,11 +15,21 @@ namespace Name_Randomizer
         public Form1()
         {
             InitializeComponent();
-            string name1 = "anna";
-            string name2 = "george";
-            listBoxName.Items.Add(name1);
-            listBoxName.Items.Add(name2);
+            LoadFormat();
+
         }
+        private void LoadFormat()
+        {
+            DefaultButtonFormat();
+        }
+        private void DefaultButtonFormat()
+        {
+            btnAdd.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+            btnCancel.Enabled = false;
+        }
+
 
         private void AddName()
         {
@@ -42,21 +52,14 @@ namespace Name_Randomizer
             }
 
         }
+
+
+        // BUTTON FUNCTIONS
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
             AddName();
             textBox1.Text = "";
-        }
-
-        private void listBoxName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int selectedIndex = listBoxName.SelectedIndex;
-            if (selectedIndex != -1)
-            {
-                textBox1.Text = listBoxName.SelectedItem.ToString();
-            }
-
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -64,6 +67,39 @@ namespace Name_Randomizer
             if (selectedIndex != -1)
             {
                 listBoxName.Items[selectedIndex] = textBox1.Text;
+            }
+
+            DefaultButtonFormat();
+            textBox1.Text = "";
+
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DefaultButtonFormat();
+            textBox1.Text = "";
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DefaultButtonFormat();
+            textBox1.Text = "";
+        }
+
+        // *************************************************
+
+        private void listBoxName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Disable add button and enable other two
+            btnAdd.Enabled = false;
+            btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
+            btnCancel.Enabled = true;
+
+
+            int selectedIndex = listBoxName.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                textBox1.Text = listBoxName.SelectedItem.ToString();
             }
 
         }
