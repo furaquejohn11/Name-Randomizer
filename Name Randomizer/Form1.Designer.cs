@@ -45,6 +45,7 @@ namespace Name_Randomizer
             this.txtNumOfMembers = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRandom = new System.Windows.Forms.Button();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -59,7 +60,7 @@ namespace Name_Randomizer
             // listBoxName
             // 
             this.listBoxName.FormattingEnabled = true;
-            this.listBoxName.Location = new System.Drawing.Point(508, 46);
+            this.listBoxName.Location = new System.Drawing.Point(490, 46);
             this.listBoxName.Name = "listBoxName";
             this.listBoxName.Size = new System.Drawing.Size(316, 316);
             this.listBoxName.TabIndex = 1;
@@ -136,9 +137,9 @@ namespace Name_Randomizer
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(35, 426);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 13);
+            this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Equally Divided?:";
+            this.label5.Text = "CWTS Mode?:";
             // 
             // txtNumOfGroups
             // 
@@ -157,6 +158,7 @@ namespace Name_Randomizer
             this.equallyYes.TabIndex = 11;
             this.equallyYes.Text = "Yes";
             this.equallyYes.UseVisualStyleBackColor = true;
+            this.equallyYes.CheckedChanged += new System.EventHandler(this.equallyYes_CheckedChanged);
             // 
             // equallyNo
             // 
@@ -167,6 +169,7 @@ namespace Name_Randomizer
             this.equallyNo.TabIndex = 12;
             this.equallyNo.Text = "No";
             this.equallyNo.UseVisualStyleBackColor = true;
+            this.equallyNo.CheckedChanged += new System.EventHandler(this.equallyNo_CheckedChanged);
             // 
             // txtNumOfMembers
             // 
@@ -195,11 +198,22 @@ namespace Name_Randomizer
             this.btnRandom.UseVisualStyleBackColor = true;
             this.btnRandom.Click += new System.EventHandler(this.btnRandom_Click);
             // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Location = new System.Drawing.Point(812, 46);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(92, 51);
+            this.btnDeleteAll.TabIndex = 16;
+            this.btnDeleteAll.Text = "Delete All";
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 591);
+            this.ClientSize = new System.Drawing.Size(913, 591);
+            this.Controls.Add(this.btnDeleteAll);
             this.Controls.Add(this.btnRandom);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtNumOfMembers);
@@ -243,6 +257,7 @@ namespace Name_Randomizer
         private System.Windows.Forms.TextBox txtNumOfMembers;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnRandom;
+        private System.Windows.Forms.Button btnDeleteAll;
     }
 }
 

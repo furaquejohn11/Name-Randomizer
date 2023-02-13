@@ -23,11 +23,34 @@ namespace Name_Randomizer
         }
         private void LoadResult()
         {
+            
             Form1 form1 = new Form1();
-
-            foreach(var names in form1.randomList)
+            //MessageBox.Show(Form1.CWTS.ToString());
+            
+            if (listBoxResult.Items.Count != 0)
             {
-                listBoxResult.Items.Add(names);
+                foreach(string str in listBoxResult.Items)
+                {
+                    listBoxResult.Items.Remove(str);
+                }
+            }
+            
+            if (Form1.CWTS)
+            {
+                foreach (var names in form1.combineCwts)
+                {
+                    listBoxResult.Items.Add(names);
+                }
+            }
+            else
+            {
+            
+                foreach (var names in form1.randomList)
+                {
+                    listBoxResult.Items.Add(names);
+                }
+
+             
             }
            
         }
