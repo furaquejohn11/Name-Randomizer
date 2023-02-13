@@ -31,30 +31,47 @@ namespace Name_Randomizer
         {
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxResult = new System.Windows.Forms.ListBox();
+            this.btnExport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(309, 22);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(327, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.Size = new System.Drawing.Size(62, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Result";
             // 
             // listBoxResult
             // 
+            this.listBoxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxResult.FormattingEnabled = true;
-            this.listBoxResult.Location = new System.Drawing.Point(142, 70);
+            this.listBoxResult.ItemHeight = 16;
+            this.listBoxResult.Location = new System.Drawing.Point(102, 38);
             this.listBoxResult.Name = "listBoxResult";
-            this.listBoxResult.Size = new System.Drawing.Size(390, 303);
+            this.listBoxResult.Size = new System.Drawing.Size(537, 340);
             this.listBoxResult.TabIndex = 1;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(600, 398);
+            this.btnExport.MaximumSize = new System.Drawing.Size(109, 40);
+            this.btnExport.MinimumSize = new System.Drawing.Size(109, 40);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(109, 40);
+            this.btnExport.TabIndex = 2;
+            this.btnExport.Text = "Export to TXT";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // frmResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 450);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.listBoxResult);
             this.Controls.Add(this.label1);
             this.Name = "frmResult";
@@ -70,5 +87,6 @@ namespace Name_Randomizer
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBoxResult;
+        private System.Windows.Forms.Button btnExport;
     }
 }

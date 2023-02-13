@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Name_Randomizer
 {
@@ -53,6 +54,18 @@ namespace Name_Randomizer
              
             }
            
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter writer = new StreamWriter("list.txt"))
+            {
+                foreach (string str in  listBoxResult.Items)
+                {
+                    writer.WriteLine(str);
+                }
+                MessageBox.Show("Names exported successfully!");
+            }
         }
     }
 }

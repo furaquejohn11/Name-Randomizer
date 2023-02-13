@@ -118,6 +118,11 @@ namespace Name_Randomizer
             }
             else if (equallyNo.CheckState == CheckState.Checked)
             {
+                if (!Int32.TryParse(txtNumOfMembers.Text, out int x))
+                {
+                    MessageBox.Show("Please input a value in number or members per group!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 RandomProcess();
                 CWTS = false;
             }
@@ -171,6 +176,7 @@ namespace Name_Randomizer
         }
         private void RandomProcess()
         {
+            
             Random random = new Random();
             //int numOfGrps = Convert.ToInt32(txtNumOfGroups.Text);
             int numPerGrp = Convert.ToInt32(txtNumOfMembers.Text);
@@ -316,6 +322,7 @@ namespace Name_Randomizer
             if (equallyYes.CheckState == CheckState.Checked)
             {
                 equallyNo.CheckState = CheckState.Unchecked;
+                txtNumOfMembers.Enabled = false;
             }
             
         }
@@ -325,6 +332,7 @@ namespace Name_Randomizer
             if (equallyNo.CheckState == CheckState.Checked)
             {
                 equallyYes.CheckState = CheckState.Unchecked;
+                txtNumOfMembers.Enabled = true;
             }
             
         }
