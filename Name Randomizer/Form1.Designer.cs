@@ -146,6 +146,7 @@ namespace Name_Randomizer
             this.txtNumOfGroups.Name = "txtNumOfGroups";
             this.txtNumOfGroups.Size = new System.Drawing.Size(71, 20);
             this.txtNumOfGroups.TabIndex = 10;
+            this.txtNumOfGroups.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumOfGroups_KeyPress);
             // 
             // equallyYes
             // 
@@ -192,6 +193,7 @@ namespace Name_Randomizer
             this.btnRandom.TabIndex = 15;
             this.btnRandom.Text = "Random Now";
             this.btnRandom.UseVisualStyleBackColor = true;
+            this.btnRandom.Click += new System.EventHandler(this.btnRandom_Click);
             // 
             // Form1
             // 
@@ -217,6 +219,7 @@ namespace Name_Randomizer
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

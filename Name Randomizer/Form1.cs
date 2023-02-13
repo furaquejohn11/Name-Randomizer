@@ -29,7 +29,12 @@ namespace Name_Randomizer
             btnDelete.Enabled = false;
             btnCancel.Enabled = false;
         }
-
+        private static List<string> randomNames = new List<string>();
+        public List<string> randomList
+        {
+            get { return randomNames; }
+            set { randomNames = value; }
+        }
 
         private void AddName()
         {
@@ -84,6 +89,12 @@ namespace Name_Randomizer
             DefaultButtonFormat();
             textBox1.Text = "";
         }
+        private void btnRandom_Click(object sender, EventArgs e)
+        {
+            RandomProcess();
+            frmResult formResult = new frmResult();
+            formResult.ShowDialog();
+        }
 
         // *************************************************
 
@@ -104,6 +115,56 @@ namespace Name_Randomizer
 
         }
 
-        
+        private void txtNumOfGroups_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // If not, cancel the key press
+                e.Handled = true;
+            }
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // If not, cancel the key press
+                e.Handled = true;
+            }
+        }
+        private void RandomProcess()
+        {
+
+
+            Random random = new Random();
+
+            //int numOfGrps = Convert.ToInt32(txtNumOfGroups.Text);
+            int numPerGrp = Convert.ToInt32(txtNumOfMembers.Text);
+            int numOfMembers = listBoxName.Items.Count ;
+            int randomNum = random.Next(0, numOfMembers);
+
+            int count = 0;
+            int grp = 1;
+            while (count != numOfMembers)
+            {
+                if (!randomNames.Contains(listBoxName.Items[randomNum]))
+                {
+                                     
+                    if (count == 0 || (count + 1) % numPerGrp == 0)
+                    {
+                        string groupNum = grp.ToString() + ": ";
+                        randomNames.Add("Group :" + groupNum);
+                        //randomNames.Add(" ");
+                        grp++;
+                    }
+
+                    randomNames.Add(listBoxName.Items[randomNum].ToString());
+                    count++;
+
+                }
+                randomNum = random.Next(0, numOfMembers);
+            }
+
+        }
     }
 }
