@@ -200,9 +200,10 @@ namespace Name_Randomizer
 
                     if (count == 0 || count % numPerGrp == 0)
                     {
+                        randomNames.Add(" ");
                         string groupNum = grp.ToString() + ": ";
                         randomNames.Add("Group :" + groupNum);
-                        //randomNames.Add(" ");
+                        
                         grp++;
                     }
 
