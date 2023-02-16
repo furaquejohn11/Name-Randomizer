@@ -46,6 +46,10 @@ namespace Name_Randomizer
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRandom = new System.Windows.Forms.Button();
             this.btnDeleteAll = new System.Windows.Forms.Button();
+            this.txtException = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pnlException = new System.Windows.Forms.Panel();
+            this.pnlException.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -215,6 +219,35 @@ namespace Name_Randomizer
             this.btnDeleteAll.UseVisualStyleBackColor = true;
             this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
+            // txtException
+            // 
+            this.txtException.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtException.Location = new System.Drawing.Point(15, 40);
+            this.txtException.Multiline = true;
+            this.txtException.Name = "txtException";
+            this.txtException.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtException.Size = new System.Drawing.Size(316, 171);
+            this.txtException.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label6.Location = new System.Drawing.Point(82, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(199, 26);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "6AM Exception List";
+            // 
+            // pnlException
+            // 
+            this.pnlException.Controls.Add(this.txtException);
+            this.pnlException.Controls.Add(this.label6);
+            this.pnlException.Location = new System.Drawing.Point(289, 368);
+            this.pnlException.Name = "pnlException";
+            this.pnlException.Size = new System.Drawing.Size(347, 215);
+            this.pnlException.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,12 +270,15 @@ namespace Name_Randomizer
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.listBoxName);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.pnlException);
             this.MaximumSize = new System.Drawing.Size(929, 630);
             this.MinimumSize = new System.Drawing.Size(929, 630);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
+            this.pnlException.ResumeLayout(false);
+            this.pnlException.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,6 +303,9 @@ namespace Name_Randomizer
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnRandom;
         private System.Windows.Forms.Button btnDeleteAll;
+        private System.Windows.Forms.TextBox txtException;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel pnlException;
     }
 }
 

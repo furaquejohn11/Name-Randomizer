@@ -31,7 +31,7 @@ namespace Name_Randomizer
             btnDelete.Enabled = false;
             btnCancel.Enabled = false;
         }
-        private static List<string> randomNames = new List<string>();
+        private static List<string> randomNames = new List<string>();       
         private static bool alreadyRandom = false;
         public static bool CWTS = false;
         
@@ -47,6 +47,13 @@ namespace Name_Randomizer
         {
             get { return combine; }
             set { combine = value; }
+        }
+
+        private static List<string> exceptionList = new List<string>();
+        public List<string> exceptionNames
+        {
+            get { return exceptionList; }
+            set { exceptionList = value; }
         }
 
         private void AddName()
@@ -218,104 +225,129 @@ namespace Name_Randomizer
 
         }
 
+
         // edit this if you want to create your own function
         private void CwtsMode()
         {
-            List<string> sixAM = new List<string>();
-            List<string> memberDuties = new List<string>();
-            
-            Random random = new Random();
-            int randomNum = random.Next(0, 48);
-
-
-            
-            if (combine.Count != 0)
+            try
             {
-                for (int i = combine.Count - 1; i >= 0; i--)
+                List<string> sixAM = new List<string>();
+                List<string> memberDuties = new List<string>();
+
+                Random random = new Random();
+                int randomNum = random.Next(0, 48);
+
+
+
+                if (combine.Count != 0)
                 {
-                    combine.RemoveAt(i);
-                }
-                foreach (string str in sixAM)
-                {
-                    sixAM.Remove(str);
-                }
-
-                foreach (string str in memberDuties)
-                {
-                    memberDuties.Remove(str);
-                }
-
-                
-            }
-
-            
-
-
-            //in 6 am duties
-            int counter1 = 0;
-            while (counter1 != 10)
-            {
-                if (!sixAM.Contains(listBoxName.Items[randomNum]))
-                {
-                    sixAM.Add(listBoxName.Items[randomNum].ToString());
-                    counter1++;
-                }
-                randomNum = random.Next(0, 48);
-            }
-            sixAM.Add(" ");
-
-
-            
-            //Group Assigned
-            randomNum = random.Next(0, 48);
-            int counter2 = 0;
-            
-            while (counter2 != 48)
-            {
-                if(!memberDuties.Contains(listBoxName.Items[randomNum]))
-                {
-                    memberDuties.Add(listBoxName.Items[randomNum].ToString());
-                    counter2++;
-                }
-                randomNum = random.Next(0, 48);
-            }
-            
-
-            // Combine
-
-            combine.Add("6 AM DUTY");
-            foreach (string officers in sixAM)
-            {
-                combine.Add(officers);
-            }
-
-
-            
-            int grpNum = 1;
-            combine.Add("Group Duty");
-            foreach (string officers in memberDuties)
-            {
-                if (grpNum <= 45)
-                {
-                    combine.Add("Group: " + grpNum.ToString() + " " + officers);
-                    grpNum++;
-                }
-                else
-                {
-                    if (grpNum == 46)
+                    for (int i = combine.Count - 1; i >= 0; i--)
                     {
-                        combine.Add(" ");
-                        combine.Add("Gate");
-                        grpNum++;
+                        combine.RemoveAt(i);
                     }
+                    foreach (string str in sixAM)
+                    {
+                        sixAM.Remove(str);
+                    }
+
+                    foreach (string str in memberDuties)
+                    {
+                        memberDuties.Remove(str);
+                    }
+
+
+                }
+
+
+                ExceptionFunction();
+
+                //in 6 am duties
+                int counter1 = 0;
+                while (counter1 != 10)
+                {
+                    if (!sixAM.Contains(listBoxName.Items[randomNum]) && !exceptionList.Contains(listBoxName.Items[randomNum]))
+                    {
+                        sixAM.Add(listBoxName.Items[randomNum].ToString());
+                        counter1++;
+                    }
+                    randomNum = random.Next(0, 48);
+                }
+                sixAM.Add(" ");
+
+
+
+                //Group Assigned
+                randomNum = random.Next(0, 48);
+                int counter2 = 0;
+
+                while (counter2 != 48)
+                {
+                    if (!memberDuties.Contains(listBoxName.Items[randomNum]))
+                    {
+                        memberDuties.Add(listBoxName.Items[randomNum].ToString());
+                        counter2++;
+                    }
+                    randomNum = random.Next(0, 48);
+                }
+
+
+                // Combine
+
+                combine.Add("6 AM DUTY");
+                foreach (string officers in sixAM)
+                {
                     combine.Add(officers);
                 }
-            }
 
+
+
+                int grpNum = 1;
+                combine.Add("Group Duty");
+                foreach (string officers in memberDuties)
+                {
+                    if (grpNum <= 45)
+                    {
+                        combine.Add("Group: " + grpNum.ToString() + " " + officers);
+                        grpNum++;
+                    }
+                    else
+                    {
+                        if (grpNum == 46)
+                        {
+                            combine.Add(" ");
+                            combine.Add("Gate");
+                            grpNum++;
+                        }
+                        combine.Add(officers);
+                    }
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Total number of members does not exceed to the given criteria! Are you missing some members?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             
 
 
 
+        }
+
+        private void ExceptionFunction()
+        {
+            if (exceptionList.Count != 0)
+            {
+                for (int i = exceptionList.Count - 1; i >= 0; i--)
+                {
+                    exceptionList.RemoveAt(i);
+                }
+            }
+            string[] names = txtException.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            foreach (string str in names)
+            {
+                exceptionList.Add(str);
+            }
         }
 
         private void equallyYes_CheckedChanged(object sender, EventArgs e)
@@ -324,6 +356,7 @@ namespace Name_Randomizer
             {
                 equallyNo.CheckState = CheckState.Unchecked;
                 txtNumOfMembers.Enabled = false;
+                pnlException.Visible = true;
             }
             
         }
@@ -334,10 +367,9 @@ namespace Name_Randomizer
             {
                 equallyYes.CheckState = CheckState.Unchecked;
                 txtNumOfMembers.Enabled = true;
+                pnlException.Visible = false;
             }
             
         }
-
-        
     }
 }
