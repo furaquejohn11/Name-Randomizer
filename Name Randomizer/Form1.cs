@@ -234,11 +234,13 @@ namespace Name_Randomizer
                 List<string> sixAM = new List<string>();
                 List<string> memberDuties = new List<string>();
 
+                int totalNumOfMembers = listBoxName.Items.Count;
+
                 Random random = new Random();
-                int randomNum = random.Next(0, 48);
+                int randomNum = random.Next(0, totalNumOfMembers);
 
 
-
+                // Checking if the list contains any name
                 if (combine.Count != 0)
                 {
                     for (int i = combine.Count - 1; i >= 0; i--)
@@ -261,33 +263,37 @@ namespace Name_Randomizer
 
                 ExceptionFunction();
 
-                //in 6 am duties
+                // 6 am duties
                 int counter1 = 0;
-                while (counter1 != 10)
+
+
+                //sixAM.Add("Monroy, Prince Andrei B.");
+                while (counter1 < 10)
                 {
                     if (!sixAM.Contains(listBoxName.Items[randomNum]) && !exceptionList.Contains(listBoxName.Items[randomNum]))
+                        
                     {
                         sixAM.Add(listBoxName.Items[randomNum].ToString());
                         counter1++;
                     }
-                    randomNum = random.Next(0, 48);
+                    randomNum = random.Next(0, totalNumOfMembers);
                 }
                 sixAM.Add(" ");
 
 
 
                 //Group Assigned
-                randomNum = random.Next(0, 48);
+                randomNum = random.Next(0, totalNumOfMembers);
                 int counter2 = 0;
 
-                while (counter2 != 48)
+                while (counter2 < totalNumOfMembers)
                 {
                     if (!memberDuties.Contains(listBoxName.Items[randomNum]))
                     {
                         memberDuties.Add(listBoxName.Items[randomNum].ToString());
                         counter2++;
                     }
-                    randomNum = random.Next(0, 48);
+                    randomNum = random.Next(0, totalNumOfMembers);
                 }
 
 
