@@ -21,7 +21,7 @@ namespace Name_Randomizer
         private void LoadFormat()
         {
             DefaultButtonFormat();
-            equallyNo.CheckState = CheckState.Checked;
+            equallyYes.CheckState = CheckState.Checked;
             
         }
         private void DefaultButtonFormat()
@@ -200,14 +200,17 @@ namespace Name_Randomizer
            
             int count = 0;
             int grp = 1;
-            while (count != numOfMembers)
+            while (count < numOfMembers)
             {
                 if (!randomNames.Contains(listBoxName.Items[randomNum]))
                 {
 
                     if (count == 0 || count % numPerGrp == 0)
                     {
-                        randomNames.Add(" ");
+                        if (count > 0)
+                        {
+                            randomNames.Add(" ");
+                        }
                         string groupNum = grp.ToString() + ": ";
                         randomNames.Add("Group :" + groupNum);
                         
